@@ -35,7 +35,12 @@ Redmine::Plugin.register :redmine_centosadmin_rating do
            partial: 'centos/rating/settings'
 end
 
-ActionDispatch::Callbacks.to_prepare do
+if Rails::VERSION::MAJOR >= 5 and Rails::VERSION::MINOR >= 1
+  reloader = ActiveSupport::Reloader
+else
+  reloader = ActionDispatch::Callbacks
+end
+reloader.to_prepare do
   unless Issue.included_modules.include? Centos::Rating::Patches::Issue
     Issue.send :include, Centos::Rating::Patches::Issue
   end

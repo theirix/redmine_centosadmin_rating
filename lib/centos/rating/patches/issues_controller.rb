@@ -6,7 +6,7 @@ module Centos::Rating::Patches
       base.send :include, InstanceMethods
 
       base.class_eval do
-        after_filter :update_rating, only: :update
+        after_action :update_rating, only: :update
       end
     end
 

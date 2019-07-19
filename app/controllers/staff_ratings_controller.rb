@@ -1,9 +1,9 @@
 class StaffRatingsController < ApplicationController
-  before_filter :find_rating, except: [:index, :new, :create]
-  before_filter :build_rating_from_params, only: [:create, :update]
-  before_filter :set_project, except: [:new, :index]
-  before_filter :authorize,   except: [:new, :index]
-  before_filter :check_editability, only: [:edit, :update, :destroy]
+  before_action :find_rating, except: [:index, :new, :create]
+  before_action :build_rating_from_params, only: [:create, :update]
+  before_action :set_project, except: [:new, :index]
+  before_action :authorize,   except: [:new, :index]
+  before_action :check_editability, only: [:edit, :update, :destroy]
 
 
   helper :sort

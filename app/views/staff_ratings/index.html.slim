@@ -28,7 +28,7 @@ h2 = l :label_rating_plural
     p #{ l :label_average_mark }: #{ html_hours @average_mark.round(2).to_s }
 
   = form_tag
-    = hidden_field_tag 'back_url', url_for(params)
+    = hidden_field_tag 'back_url', url_for(params.to_enum.to_h)
     .autoscroll
       table.list
         thead
